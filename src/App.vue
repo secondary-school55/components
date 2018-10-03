@@ -1,28 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <youtube-playlist 
+      id="PLRRIw-HYRJOr2XVPRWJTTHpGPV_C4pwiv" 
+      columns="5"
+      gap="10px"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import YoutubePlaylist from "./components/youtube-playlist";
 
 export default {
-  name: "app",
-  components: {
-    HelloWorld
-  }
+  components: { YoutubePlaylist }
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
 </style>

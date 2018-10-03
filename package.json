@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target wc src/components/*.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/web-component-wrapper": "^1.2.0",
+    "axios": "^0.18.0",
     "vue": "^2.5.17"
   },
   "devDependencies": {
