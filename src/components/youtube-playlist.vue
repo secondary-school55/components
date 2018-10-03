@@ -24,8 +24,7 @@
       @click="current = null">
       <iframe
         :src="current"
-        frameborder="0" 
-        allow="autoplay"/>
+        frameborder="0"/>
     </div>
   </div>
 </template>
@@ -66,7 +65,7 @@ export default {
   },
   methods: {
     click(v) {
-      this.current = `https://www.youtube.com/embed/${v.id}?autoplay=1`;
+      this.current = `https://www.youtube.com/embed/${v.id}?rel=0`;
     },
     async getPlaylist(playlistId) {
       const result = [];
