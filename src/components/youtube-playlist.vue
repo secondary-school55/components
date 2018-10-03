@@ -149,7 +149,7 @@ export default {
 .title {
   font-family: "Georgia", serif;
   text-align: center;
-  font-size: 1.2vw;
+  font-size: 1.5vw;
 }
 
 #player {
