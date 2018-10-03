@@ -8,11 +8,14 @@
         v-for="video in items" 
         :key="video.thumbnail"
         @click="click(video)"
+        ref="video"
       >
         <img 
           class="thumbnail" 
           :src="video.thumbnail">
-        <div class="title">{{ video.title }}</div>
+        <div 
+          class="title" 
+        >{{ video.title }}</div>
       </div>
     </div>
     <div 
@@ -21,7 +24,8 @@
       @click="current = null">
       <iframe
         :src="current"
-        frameborder="0"/>
+        frameborder="0" 
+        allow="autoplay"/>
     </div>
   </div>
 </template>
@@ -62,7 +66,7 @@ export default {
   },
   methods: {
     click(v) {
-      this.current = `https://www.youtube.com/embed/${v.id}`;
+      this.current = `https://www.youtube.com/embed/${v.id}?autoplay=1`;
     },
     async getPlaylist(playlistId) {
       const result = [];
@@ -144,7 +148,8 @@ export default {
 
 .title {
   font-family: "Georgia", serif;
-  text-align: justify;
+  text-align: center;
+  font-size: 1.2vw;
 }
 
 #player {
@@ -160,7 +165,7 @@ export default {
 }
 
 #player iframe {
-  width: 50%;
-  height: 50%;
+  width: 75%;
+  height: 75%;
 }
 </style>
