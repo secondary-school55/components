@@ -67,62 +67,8 @@ export default {
     click(v) {
       this.current = `https://www.youtube.com/embed/${v.id}?rel=0`;
     },
-    async getPlaylist(playlistId) {
-      const result = [];
-
-      async function request(playlistId, pageToken) {
-        let base =
-          "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" +
-          playlistId +
-          "&key=AIzaSyBtTR8lcCkJUg9ztn31TsLhe5kBCjWB65U";
-
-        if (pageToken !== undefined) base += `&pageToken=${pageToken}`;
-
-        const data = (await axios.get(base)).data;
-        const items = data.items;
-        const nextPage = data.nextPageToken;
-
-        for (const i of items) {
-          if (i.snippet.thumbnails === undefined) continue;
-
-          const reDate = /(\d\d\d\d)-(\d\d)-(\d\d)/g.exec(
-            i.snippet.publishedAt
-          );
-
-          const id = i.snippet.resourceId.videoId;
-          const year = reDate[1];
-          const month = reDate[2];
-          const day = reDate[3];
-          const formatDot = `${day}.${month}.${year}`;
-          const formatSlash = `${day}/${month}/${year}`;
-
-          const url = "https://www.youtube.com/watch?v=" + id;
-          const title = i.snippet.title.replace(/"/g, '\\"');
-          const description = i.snippet.description.split("\n\n")[0];
-          const thumbnail = i.snippet.thumbnails.high.url;
-
-          result.push({
-            id,
-            url,
-            title,
-            year,
-            month,
-            day,
-            formatDot,
-            formatSlash,
-            description,
-            thumbnail
-          });
-        }
-
-        if (nextPage !== undefined) await request(playlistId, nextPage);
-      }
-      await request(playlistId);
-      return result;
-    }
-  },
   async created() {
-    this.items = await this.getPlaylist(this.id);
+    this.items = (await axios.get(`https://api.school55.pp.ua/api/youtube/playlist/${this.id}`)).data;
   }
 };
 </script>
