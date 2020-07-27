@@ -18,14 +18,6 @@
         >{{ video.title }}</div>
       </div>
     </div>
-    <div 
-      v-if="current"
-      id="player" 
-      @click="current = null">
-      <iframe
-        :src="current"
-        frameborder="0"/>
-    </div>
   </div>
 </template>
 
@@ -50,8 +42,7 @@ export default {
   },
   data() {
     return {
-      items: [],
-      current: null
+      items: []
     };
   },
   computed: {
@@ -65,7 +56,7 @@ export default {
   },
   methods: {
     click(v) {
-      this.current = `https://www.youtube.com/embed/${v.id}?rel=0`;
+      window.open(v.route, '_blank');      
     }
   },
   async created() {
