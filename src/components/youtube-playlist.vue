@@ -74,7 +74,7 @@ export default {
         let base =
           "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" +
           playlistId +
-          "&key=AIzaSyB-_brk224t6vZMfast60I0brymIdiU2q4";
+          "&key=AIzaSyBtTR8lcCkJUg9ztn31TsLhe5kBCjWB65U";
 
         if (pageToken !== undefined) base += `&pageToken=${pageToken}`;
 
