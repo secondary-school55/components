@@ -66,7 +66,7 @@ export default {
   methods: {
     click(v) {
       this.current = `https://www.youtube.com/embed/${v.id}?rel=0`;
-    },
+    }
   },
   async created() {
     this.items = (await axios.get(`https://api.school55.pp.ua/api/youtube/playlist/${this.id}`)).data;
